@@ -10,11 +10,6 @@ Full-stack developer building things with React, Python, and whatever's needed. 
 ### Tech Stack
 JavaScript • Python • React • FastAPI • PostgreSQL • PyTorch • Next.js
 
-### Let's connect
-- 💼 [LinkedIn](https://linkedin.com) — let's talk about projects
-- 📧 Email — [add your email]
-- 🔗 [Portfolio](https://github.com/ThariqAdzikra/portfolio)
-
 ---
 
-**Updated:** 15 September 2026, 15:34 UTC
+**Updated:** <!-- UPDATE_DATE --> UTC
