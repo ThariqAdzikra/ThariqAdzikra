@@ -16,7 +16,7 @@ jobs:
       
       - name: Update date
         run: |
-          DATE=$(date -u '+%d %B %Y, %H:%M')
+          DATE=$(TZ=Asia/Jakarta date '+%d %B %Y, %H:%M')
           sed -i "s|<!-- UPDATE_DATE -->|$DATE|g" README.md
       
       - name: Commit & Push
