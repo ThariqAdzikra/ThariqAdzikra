@@ -1,10 +1,10 @@
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Hey%2C+I'm+Thariq+%F0%9F%91%8B;Software+Developer+%26+ML+Enthusiast;Building+things+that+actually+work.)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Hey%2C+I'm+Thariq;Software+Developer+%26+ML+Enthusiast;Building+things+that+actually+work.)](https://git.io/typing-svg)
 
 <br/>
 
-I'm a CS student who codes full-stack web apps by day and breaks neural networks by night.  
+I'm a CS student who codes full-stack web apps by day and breaks neural networks by night.
 Currently obsessed with making ML models useful in the real world — not just in notebooks.
 
 <br/>
@@ -20,17 +20,17 @@ Currently obsessed with making ML models useful in the real world — not just i
 
 ---
 
-### 🔭 What I'm Building
+### What I'm Building
 
 | Project | Stack | About |
 |---|---|---|
-| [**ChilliGuard**](https://chilliguard-omega.vercel.app/) | PyTorch · FastAPI · React | Disease detection for chili plants using computer vision |
-| [**LifeQuest**](https://lifequest-edge.pages.dev/) | Next.js · Cloudflare Pages | Gamified habit tracker — build streaks, level up your life |
-| [**KatalogUMKM**](http://yourcatalogue.42web.io/) | Next.js · PostgreSQL · LLM | UMKM product catalog with an AI chatbot for product discovery |
+| [ChilliGuard](https://chilliguard-omega.vercel.app/) | PyTorch · FastAPI · React | Disease detection for chili plants using computer vision |
+| [LifeQuest](https://lifequest-edge.pages.dev/) | Next.js · Cloudflare Pages | Gamified habit tracker — build streaks, level up your life |
+| [KatalogUMKM](http://yourcatalogue.42web.io/) | Next.js · PostgreSQL · LLM | UMKM product catalog with an AI chatbot for product discovery |
 
 ---
 
-### 🧠 Tech Stack
+### Tech Stack
 
 <div align="center">
 
@@ -66,7 +66,7 @@ Currently obsessed with making ML models useful in the real world — not just i
 
 ---
 
-### 📊 GitHub Stats
+### GitHub Stats
 
 <div align="center">
 
@@ -81,7 +81,7 @@ Currently obsessed with making ML models useful in the real world — not just i
 
 ---
 
-### 🐍 Contribution Graph
+### Contribution Graph
 
 <div align="center">
 
@@ -97,6 +97,6 @@ Currently obsessed with making ML models useful in the real world — not just i
 
 <div align="center">
 
-<sub>🔄 Auto-updated on <!-- UPDATE_DATE --> · Built with GitHub Actions</sub>
+<sub>Auto-updated on <!-- UPDATE_DATE --> · Built with GitHub Actions</sub>
 
 </div>
