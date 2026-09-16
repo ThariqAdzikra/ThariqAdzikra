@@ -1,0 +1,51 @@
+name: Update README
+
+on:
+  schedule:
+    # Runs at 08:00 UTC = 15:00 WIB every day
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inject current date into README
+        run: |
+          # Get current date in WIB (Asia/Jakarta)
+          DATE=$(TZ=Asia/Jakarta date '+%-d %B %Y, %H:%M WIB')
+
+          # Replace the placeholder using Python for reliability (handles edge cases sed can't)
+          python3 - <<EOF
+          import re
+
+          with open('README.md', 'r', encoding='utf-8') as f:
+              content = f.read()
+
+          # Replace date between the marker and the bullet/period after it
+          updated = re.sub(
+              r'<!-- UPDATE_DATE -->.*?(?= ·)',
+              '<!-- UPDATE_DATE --> ${DATE}',
+              content
+          )
+
+          with open('README.md', 'w', encoding='utf-8') as f:
+              f.write(updated)
+
+          print(f"Date injected: ${DATE}")
+          EOF
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          # Always commit — this is what keeps the contribution graph green
+          git diff --staged --quiet && echo "No changes detected" || \
+            git commit -m "chore: daily readme update [$(TZ=Asia/Jakarta date '+%Y-%m-%d')]"
+          git push
