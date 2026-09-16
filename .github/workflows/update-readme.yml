@@ -15,37 +15,111 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Inject current date into README
+      - name: Generate stats and inject into README
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Get current date in WIB (Asia/Jakarta)
-          DATE=$(TZ=Asia/Jakarta date '+%-d %B %Y, %H:%M WIB')
+          python3 << 'PYEOF'
+          import os, re, json, urllib.request
+          from datetime import datetime, timezone
 
-          # Replace the placeholder using Python for reliability (handles edge cases sed can't)
-          python3 - <<EOF
-          import re
+          TOKEN   = os.environ['GITHUB_TOKEN']
+          USERNAME = 'ThariqAdzikra'
 
+          def gql(query, variables=None):
+              payload = json.dumps({'query': query, 'variables': variables or {}}).encode()
+              req = urllib.request.Request(
+                  'https://api.github.com/graphql',
+                  data=payload,
+                  headers={
+                      'Authorization': f'bearer {TOKEN}',
+                      'Content-Type': 'application/json',
+                  }
+              )
+              with urllib.request.urlopen(req) as r:
+                  return json.loads(r.read())
+
+          result = gql("""
+          query($login: String!) {
+            user(login: $login) {
+              repositories(first: 100, ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC) {
+                totalCount
+                nodes {
+                  stargazerCount
+                  languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+                    edges { size node { name } }
+                  }
+                }
+              }
+              contributionsCollection {
+                totalCommitContributions
+                restrictedContributionsCount
+              }
+              followers { totalCount }
+            }
+          }
+          """, {'login': USERNAME})
+
+          user  = result['data']['user']
+          repos = user['repositories']['nodes']
+
+          total_repos  = user['repositories']['totalCount']
+          total_stars  = sum(r['stargazerCount'] for r in repos)
+          commits      = (user['contributionsCollection']['totalCommitContributions'] +
+                          user['contributionsCollection']['restrictedContributionsCount'])
+          followers    = user['followers']['totalCount']
+
+          # Aggregate language byte sizes across all repos
+          lang_sizes = {}
+          for repo in repos:
+              for edge in repo['languages']['edges']:
+                  name = edge['node']['name']
+                  lang_sizes[name] = lang_sizes.get(name, 0) + edge['size']
+
+          total_size = sum(lang_sizes.values()) or 1
+          top_langs  = sorted(lang_sizes.items(), key=lambda x: x[1], reverse=True)[:5]
+          lang_line  = ' · '.join(f'`{name}` {size/total_size*100:.0f}%' for name, size in top_langs)
+
+          year = datetime.now(timezone.utc).year
+          block = (
+              f"| | |\n"
+              f"|:---|---:|\n"
+              f"| Public repositories | {total_repos} |\n"
+              f"| Stars earned | {total_stars} |\n"
+              f"| Commits ({year}) | {commits} |\n"
+              f"| Followers | {followers} |\n\n"
+              f"**Top languages —** {lang_line}"
+          )
+
+          # Inject stats block
           with open('README.md', 'r', encoding='utf-8') as f:
               content = f.read()
 
-          # Replace date between the marker and the bullet/period after it
-          updated = re.sub(
+          content = re.sub(
+              r'<!-- STATS_START -->.*?<!-- STATS_END -->',
+              f'<!-- STATS_START -->\n{block}\n<!-- STATS_END -->',
+              content, flags=re.DOTALL
+          )
+
+          # Inject date
+          tz_offset = datetime.now(timezone.utc).strftime('%d %B %Y')
+          date_str  = datetime.now(timezone.utc).strftime('%-d %B %Y, %H:%M UTC')
+          content   = re.sub(
               r'<!-- UPDATE_DATE -->.*?(?= ·)',
-              '<!-- UPDATE_DATE --> ${DATE}',
+              f'<!-- UPDATE_DATE --> {date_str}',
               content
           )
 
           with open('README.md', 'w', encoding='utf-8') as f:
-              f.write(updated)
+              f.write(content)
 
-          print(f"Date injected: ${DATE}")
-          EOF
+          print(f'Done — {total_repos} repos · {total_stars} stars · {commits} commits · {lang_line}')
+          PYEOF
 
       - name: Commit & Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
-          # Always commit — this is what keeps the contribution graph green
-          git diff --staged --quiet && echo "No changes detected" || \
-            git commit -m "chore: daily readme update [$(TZ=Asia/Jakarta date '+%Y-%m-%d')]"
-          git push
+          git diff --staged --quiet && echo "No changes" || \
+            git commit -m "chore: daily readme update [$(date -u '+%Y-%m-%d')]" && git push

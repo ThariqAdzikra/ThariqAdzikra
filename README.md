@@ -68,12 +68,11 @@ Currently obsessed with making ML models useful in the real world — not just i
 
 ### GitHub Stats
 
+<!-- STATS_START -->
+_Stats loading on first workflow run..._
+<!-- STATS_END -->
+
 <div align="center">
-
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=ThariqAdzikra&show_icons=true&theme=github_dark&hide_border=true&count_private=true&rank_icon=github" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ThariqAdzikra&layout=compact&theme=github_dark&hide_border=true&langs_count=8" />
-
-<br/>
 
 ![GitHub Streak](https://streak-stats.demolab.com?user=ThariqAdzikra&theme=github-dark-blue&hide_border=true&date_format=j%20M%5B%20Y%5D)
 
