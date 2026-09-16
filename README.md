@@ -9,7 +9,9 @@ Currently obsessed with making ML models useful in the real world — not just i
 
 <br/>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/ThariqAdzikra)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/thariqadzikra/)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/thrqdz_/)
+[![Gmail](https://img.shields.io/badge/Gmail-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:adzthariq@gmail.com)
 [![GitHub followers](https://img.shields.io/github/followers/ThariqAdzikra?style=flat-square&color=58A6FF&labelColor=0d1117&label=Followers)](https://github.com/ThariqAdzikra)
 [![Profile views](https://komarev.com/ghpvc/?username=ThariqAdzikra&style=flat-square&color=58A6FF&label=Profile+Views)](https://github.com/ThariqAdzikra)
 
@@ -21,8 +23,9 @@ Currently obsessed with making ML models useful in the real world — not just i
 
 | Project | Stack | About |
 |---|---|---|
-| **ChilliGuard** | PyTorch · FastAPI · React | Disease detection for chili plants using computer vision |
-| **KatalogUMKM** | Next.js · PostgreSQL · LLM | UMKM product catalog with an AI chatbot for product discovery |
+| [**ChilliGuard**](https://chilliguard-omega.vercel.app/) | PyTorch · FastAPI · React | Disease detection for chili plants using computer vision |
+| [**LifeQuest**](https://lifequest-edge.pages.dev/) | Next.js · Cloudflare Pages | Gamified habit tracker — build streaks, level up your life |
+| [**KatalogUMKM**](http://yourcatalogue.42web.io/) | Next.js · PostgreSQL · LLM | UMKM product catalog with an AI chatbot for product discovery |
 
 ---
 
