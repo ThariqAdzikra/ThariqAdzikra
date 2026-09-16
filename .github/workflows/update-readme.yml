@@ -53,6 +53,10 @@ jobs:
               }
               contributionsCollection {
                 totalCommitContributions
+                totalIssueContributions
+                totalPullRequestContributions
+                totalPullRequestReviewContributions
+                totalRepositoryContributions
                 restrictedContributionsCount
               }
               followers { totalCount }
@@ -65,8 +69,15 @@ jobs:
 
           total_repos  = user['repositories']['totalCount']
           total_stars  = sum(r['stargazerCount'] for r in repos)
-          commits      = (user['contributionsCollection']['totalCommitContributions'] +
-                          user['contributionsCollection']['restrictedContributionsCount'])
+          cc = user['contributionsCollection']
+          commits = (
+              cc['totalCommitContributions'] +
+              cc['totalIssueContributions'] +
+              cc['totalPullRequestContributions'] +
+              cc['totalPullRequestReviewContributions'] +
+              cc['totalRepositoryContributions'] +
+              cc['restrictedContributionsCount']
+          )
           followers    = user['followers']['totalCount']
 
           # Aggregate language byte sizes across all repos
