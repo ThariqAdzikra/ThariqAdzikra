@@ -79,11 +79,7 @@ Currently obsessed with making ML models useful in the real world — not just i
 **Top languages —** `PHP` 25% · `Blade` 24% · `JavaScript` 14% · `TypeScript` 13% · `CSS` 11%
 <!-- STATS_END -->
 
-<div align="center">
 
-![GitHub Streak](https://streak-stats.demolab.com?user=ThariqAdzikra&theme=github-dark-blue&hide_border=true&date_format=j%20M%5B%20Y%5D)
-
-</div>
 
 ---
 
