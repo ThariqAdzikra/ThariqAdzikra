@@ -71,13 +71,13 @@ Currently obsessed with making ML models useful in the real world — not just i
 <!-- STATS_START -->
 | | |
 |:---|---:|
-| Public repositories | 18 |
+| Public repositories | 19 |
 | Stars earned | 25 |
-| Contributions (2026) | 1049 |
-| Current streak | 0 days |
+| Contributions (2026) | 1053 |
+| Current streak | 75 days |
 | Followers | 14 |
 
-**Top languages —** `PHP` 32% · `JavaScript` 23% · `TypeScript` 18% · `Astro` 13% · `Java` 6%
+**Top languages —** `Jupyter Notebook` 60% · `PHP` 13% · `JavaScript` 10% · `TypeScript` 7% · `Astro` 5%
 <!-- STATS_END -->
 
 
@@ -100,6 +100,6 @@ Currently obsessed with making ML models useful in the real world — not just i
 
 <div align="center">
 
-<sub>Auto-updated on <!-- UPDATE_DATE --> 25 November 2026, 18:32 UTC · Built with GitHub Actions</sub>
+<sub>Auto-updated on <!-- UPDATE_DATE --> 26 November 2026, 18:15 UTC · Built with GitHub Actions</sub>
 
 </div>
